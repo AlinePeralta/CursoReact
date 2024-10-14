@@ -1,0 +1,123 @@
+//Variables!
+
+//Color principal de la marca
+$marca: #1226ab;
+$marca-hover: #1730d9;
+$marca-bg: #c3caf9;
+$secun:#16112d;
+
+$bg-loading:  rgba(255, 255, 255, 0.8);
+$bg-overlay: rgba(8, 8, 65, 0.766);
+
+// Color secundario o acento de la marca
+$acento: #ed1d78;
+$acento-hover: #f04c94;
+$acento-bg: #fcd9e9;
+
+
+// Colores para estados de los elemntos, de preferencia no cambiar.
+$correcto: #36b57f;
+$correcto-hover: #52CB98;
+$correcto-bg: #C8EFDE;
+$advertencia: hsl(40.235, 100%, 50%);
+$advertencia-hover: hsl(40.235, 100%, 60%);
+$advertencia-bg: #FFEECC;
+$error: rgb(220 76 100);
+$error-hover: #ff431a;
+$error-bg: #FFCDC2;
+$neutral: hsl(240, 8%, 36%);
+$neutral-hover: hsl(240, 8%, 46%);
+
+
+// Colores para textos
+
+$textos: #0C0C21; // Solo se usan en textos sobre fondos claros
+$texto-hover: #002862;
+$textos-inv: #ffffff; // Solo se usan en textos sobre fondos oscuros
+$texto-error: #E62A00; //Estados de error
+
+$textos-bg: #eee;
+
+
+//Mixins!
+// _variables.scss
+
+$bp-mob: 576px;
+$bp-tab: 768px;
+$bp-lap: 992px;  
+$bp-larg: 1200px;
+$bp-desk: 1440px; // LAPTOP PANTALLA
+$bp-desk-large: 1600px; // MONITOR
+
+
+// _mixins.scss
+
+@mixin mob {
+  @media (max-width: $bp-mob) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media (min-width: $bp-mob) and (max-width: $bp-tab) {
+    @content;
+  }
+}
+
+@mixin lap {
+  @media (min-width: $bp-tab) and (max-width: $bp-lap) {
+    @content;
+  }
+}
+
+@mixin larg {
+  @media (min-width: $bp-lap) and (max-width: $bp-larg) {
+    @content;
+  }
+}
+
+@mixin desk {
+  @media (min-width: $bp-larg) and (max-width: $bp-desk) {
+    @content;
+  }
+}
+
+@mixin desk-large {
+  @media (min-width: $bp-desk-large) {
+    @content;
+  }
+}
+
+// Mixin mejorado que cubre desde desk hasta mob
+@mixin desk-to-mob {
+  @media (min-width: $bp-mob) and (max-width: $bp-desk) {
+    @content;
+  }
+}
+
+// Mixin que cubre desde desk hasta lap
+@mixin desk-to-lap {
+  @media (min-width: $bp-lap) and (max-width: $bp-desk) {
+    @content;
+  }
+}
+
+// Mixin que cubre desde larg hasta mob
+@mixin larg-to-mob {
+  @media (max-width: $bp-larg) {
+    @content;
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Kanit", sans-serif;
+}
