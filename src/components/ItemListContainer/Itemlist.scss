@@ -1,0 +1,40 @@
+@use "../../index.scss" as *;
+
+.itemlistcontainer{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .itemlist{
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .item{
+        width: 20%;
+        margin: 3% 6%;
+        padding: 2%;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+     .card{
+        padding: 1rem;
+        border: none;
+            .card-title{
+             color: $acento;
+            }
+
+            .card-img-top{
+            width: 60%;
+            margin: auto;
+            }
+     } 
+        
+  
+  }
+  

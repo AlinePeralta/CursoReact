@@ -10,21 +10,16 @@ import './App.css'
 function App() {
  
   return (
-<div> 
+<div className='container-app'> 
 
 
 <NavBar/>
-<ItemListContainer saludo ={"prueba hola"}/>
-<ItemListContainer saludo ={"Este es un promp 2"}/>
+<div className='container me-auto mb-2 mb-lg-0 mt-2'>
+<ItemListContainer saludo ={""}/>
 
-{/* <ComponentePadre>
- <h2>Saludos desde app</h2>
- <ComponenteHijo/>
- <ComponenteHijo/>
- <ComponenteHijo/>
 
- <h2>Saludo2 desde app</h2>
-</ComponentePadre> */}
+</div>
+
 
 </div>
   )
