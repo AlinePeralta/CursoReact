@@ -1,14 +1,16 @@
 import CardWidget from "./CardWidget";
 import "./navbar.scss";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-sm bg-body-tertiary">
       <div className="container text-center">
-        <a className="navbar-brand" href="#">
+        <Link to="/" className="navbar-brand">
           <img src={logo} alt="Logo" className="logoBrand d-inline-block align-text-top" />
-        </a>
+        </Link>
+        
         <button
           className="navbar-toggler"
           type="button"
@@ -20,76 +22,31 @@ const NavBar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-              Inicio
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-            Terminales TPV
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-           Accesorios
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-           Promociones
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-        Beneficios
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-            Contacto
-              </a>
-            </li>
         
-            {/* <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </li> */}
-         
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 text-center categories">
+            <li className="nav-item">
+              <Link to="/" className="nav-link active" aria-current="page">Inicio</Link>
+            </li>
+            <li className="nav-item category">
+              <Link to="/category/terminales" className="nav-link">Terminales TPV</Link>
+            </li>
+            <li className="nav-item category">
+              <Link to="/category/accesorios" className="nav-link">Accesorios</Link>
+            </li>
+            <li className="nav-item category">
+              <Link to="/category/promociones" className="nav-link">Promociones</Link>
+            </li>
+            <li className="nav-item category">
+              <Link to="/category/beneficios" className="nav-link">Beneficios</Link>
+            </li>
+            <li className="nav-item category">
+              <Link to="/contacto" className="nav-link">Contacto</Link>
+            </li>
           </ul>
+          
           <form className="d-flex">
-          <CardWidget />
-       
-           
+            <CardWidget />
           </form>
         </div>
       </div>
