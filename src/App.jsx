@@ -7,6 +7,9 @@ import avatar from "./assets/avatar.png";
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import EjemploContadorEventListener from './components/EjemplosClase/EjemploContadorEventListener';
+import EjemploFormulario from './components/EjemplosClase/EjemploFormulario';
+
 import './App.css';
 
 function App() {
@@ -34,6 +37,20 @@ function App() {
               <ItemDetailContainer saludo="" className="container me-auto mb-2 mb-lg-0" />
             }
           />
+              <Route
+            path="/ejemplos"
+            element={
+            <EjemploContadorEventListener/>
+            }
+          />
+
+            <Route
+            path="/form"
+            element={
+            <EjemploFormulario/>
+            }
+          />
+
         </Routes>
 
         {/* <Footer /> */}

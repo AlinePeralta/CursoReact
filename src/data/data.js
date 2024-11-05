@@ -2,7 +2,7 @@ const productos = [
     {
       id: 1,
       nombre: "TPV Móvil Ualá",
-      imagen: "/productos/dispositivo1.png",
+      imagen: ["/productos/dispositivo1.png", "/productos/tpv-impresora.png", "/productos/dispositivo3.png","/productos/tpv-mini-bluetooth.png" ],
       precio: 1999,
       descripcion:"lorem12",
       stock: 1,
@@ -12,7 +12,7 @@ const productos = [
     {
       id: 2,
       nombre: "TPV Fijo Ualá",
-      imagen: "/productos/tpv-impresora.png",
+      imagen: ["/productos/dispositivo1.png", "/productos/tpv-impresora.png", "/productos/dispositivo3.png","/productos/tpv-mini-bluetooth.png" ],
       precio: 2499,
       descripcion:"",
       stock: 10,
@@ -21,7 +21,7 @@ const productos = [
     {
       id: 3,
       nombre: "Mini TPV Bluetooth Ualá",
-      imagen: "/productos/dispositivo3.png",
+      imagen: ["/productos/dispositivo1.png", "/productos/tpv-impresora.png", "/productos/dispositivo3.png","/productos/tpv-mini-bluetooth.png" ],
       precio: 1499,
       descripcion:"",
       stock: 10,
