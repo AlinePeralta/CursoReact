@@ -2,7 +2,7 @@ import React from 'react';
 
 const Beneficios = () => {
   return (
-    <div className="container my-5">
+    <div className="container my-3">
       <h2 className="text-center mb-4 text-uala acent">Conoce nuestros Beneficios</h2>
       <div className="row gy-4 text-center">
         <div className="col-12 col-md-4">
