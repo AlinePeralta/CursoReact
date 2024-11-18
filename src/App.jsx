@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CarritoContext';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
-import Beneficios from './components/Beneficios/Beneficios';
+import Beneficios from './components/Beneficios/BeneficiosPage';
 import Contacto from './components/Contacto/Contacto';
 import { ToastContainer } from 'react-toastify';
 import Footer from './components/Footer/Footer';
