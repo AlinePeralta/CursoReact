@@ -3,7 +3,7 @@ import ItemList from "./ItemList.jsx";
 import { useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import db from "../../db/db.js";
-import "./ItemList.scss";
+import './Itemlist.scss';
 
 const ItemListContainer = ({ saludo }) => {
     const [productos, setProductos] = useState([]);
