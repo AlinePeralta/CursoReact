@@ -281,7 +281,8 @@ input::placeholder {
 }
 
 .bg-marca {
-  background: linear-gradient(120deg, $marca-hover, darken($marca-hover, 20%));
+  background: linear-gradient(120deg, $marca-hover, rgba($marca-hover, 0.8));
+
 }
 
 .text-cta{
