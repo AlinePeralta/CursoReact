@@ -1,101 +1,184 @@
 @use "../../index.scss" as *;
 
-
-.navbar{
+.navbar {
   padding: 1rem;
-    
- .navbar-brand{
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  @include mob {
-    margin-left: -2rem;
-  }
- }
- .nav-item {
-  font-size: 1.2rem;
-  text-align: center;
 
-  .nav-link {
-    position: relative;
-    display: inline-block;
-    padding-left: .6rem;
-    padding-right: 1rem;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background-color: $acento; // El color de acento que estás usando
-      bottom: 0;
-      left: 0;
-      transition: width 0.3s ease; // Animación de transición suave
+  .navbar-brand {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    @include mob {
+      margin-left: -2rem;
     }
+  }
 
-    &:hover {
-      color: $acento;
+  .nav-item {
+    font-size: 1.2rem;
+    text-align: center;
+
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      padding-left: .6rem;
+      padding-right: 1rem;
 
       &::after {
-        width: 100%; // Expande la línea en hover
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: $acento;
+        bottom: 0;
+        left: 0;
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        color: $acento;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    @include mob {
+      text-align: left;
+    }
+  }
+
+  .logoBrand {
+    width: 40%;
+    padding-bottom: .4rem;
+    padding-left: 2rem;
+  }
+
+  .bagItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    font-size: 1.2rem;
+    @include mob {
+      padding-bottom: 10px;
+    }
+
+    .bagItemNum {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      border-radius: 50%;
+      padding: 0.2rem;
+      width: 16px;
+      height: 16px;
+      margin-top: 0.8rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      
+      &.desactive {
+        background-color: transparent;
+      }
+
+      &.active {
+        background-color: rgb(35, 58, 135);
+        animation: scaleUp 0.5s ease-in-out;
+      }
+
+      @keyframes scaleUp {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @include mob {
+        margin-top: 0.2rem;
+      }
+
+      p {
+        color: #fff;
+        margin: 0;
+        font-size: 10px;
       }
     }
   }
-
-
-  @include mob {
-    text-align: left;
-  }
- }
-
- 
-.logoBrand {
-  width: 40%; 
-  padding-bottom: .4rem;
-  padding-left: 2rem;
 }
 
-.bagItem {
-  display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  height: 100%;
-  position: relative; 
-  font-size: 1.2rem;
-  @include mob {
-  
-   padding-bottom: 10px;
-  }
+.cart-widget-container {
+  position: relative;
 
-  .bagItemNum {
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    position: absolute; 
-    top: -5px; 
-    right: -10px; 
-    background: $error; 
-    border-radius: 50%; 
-    padding: 0.2rem; 
-    width: 16px; 
-    height: 16px;
-    margin-top: .8rem;
+  .cart-preview {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background-color: $blanco;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
-    @include mob {
-      margin-top: .2rem;
+    .cart-preview-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0;
+
+      img {
+        margin-right: 10px;
+      }
     }
-    
-    p {
-      color: #fff; 
-      margin: 0; 
-      font-size: 10px; 
+
+    .cart-preview-total {
+      margin-top: 10px;
+      text-align: center;
     }
   }
+
+  &:hover .cart-preview {
+    opacity: 1;
+    visibility: visible;
+  }
 }
+
+.cartEmpty-preview{
+  padding-top: 1rem;
 }
 
+.bagItemContainer {
+  position: relative;
 
+  .cartPreviewContainer {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: $blanco;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    width: 300px;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
 
-
-  
+  &:hover .cartPreviewContainer {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+}

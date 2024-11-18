@@ -1,59 +1,31 @@
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import avatar from "./assets/avatar.png";
-// import Contador from './components/EjemplosClase/Contador';
-// import ComponenteHijo from './components/EjemplosClase/ComponenteHijo';
-// import ComponentePadre from './components/EjemplosClase/ComponentePadre';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import EjemploContadorEventListener from './components/EjemplosClase/EjemploContadorEventListener';
-import EjemploFormulario from './components/EjemplosClase/EjemploFormulario';
+import { CartProvider } from './context/CarritoContext';
+import Cart from './components/Cart/Cart';
+import Checkout from './components/Checkout/Checkout';
+import { ToastContainer } from 'react-toastify';
 
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="container-app">
       <BrowserRouter>
-        <NavBar />
+        <CartProvider>
+          <NavBar />
+          <ToastContainer theme='colored'/>
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ItemListContainer saludo="" className="container me-auto mb-2 mb-lg-0" />
-            }
-          />
-          <Route
-            path="/category/:idCategory"
-            element={
-              <ItemListContainer saludo="" className="container me-auto mb-2 mb-lg-0" />
-            }
-          />
-             <Route
-            path="/detail/:idProducto"
-            element={
-              <ItemDetailContainer saludo="" className="container me-auto mb-2 mb-lg-0" />
-            }
-          />
-              <Route
-            path="/ejemplos"
-            element={
-            <EjemploContadorEventListener/>
-            }
-          />
-
-            <Route
-            path="/form"
-            element={
-            <EjemploFormulario/>
-            }
-          />
-
-        </Routes>
-
-        {/* <Footer /> */}
+          <Routes>
+            <Route path="/" element={<ItemListContainer saludo="" className="container me-auto mb-2 mb-lg-0" />} />
+            <Route path="/category/:idCategory" element={<ItemListContainer saludo="" className="container me-auto mb-2 mb-lg-0" />} />
+            <Route path="/detail/:idProducto" element={<ItemDetailContainer saludo="" className="container me-auto mb-2 mb-lg-0" />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path='/checkout' element={<Checkout/>}/>
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
     </div>
   );

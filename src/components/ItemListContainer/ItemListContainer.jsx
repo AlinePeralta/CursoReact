@@ -1,46 +1,61 @@
+import { useState, useEffect } from "react";
+import ItemList from "./ItemList.jsx";
+import { useParams } from "react-router-dom";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import db from "../../db/db.js";
+import "./ItemList.scss";
 
-import { useState, useEffect } from "react"
-import { getProducts } from "../../data/data.js"
-import ItemList from "./ItemList.jsx"
-import { useParams } from "react-router-dom"
-import "./ItemList.scss"
+const ItemListContainer = ({ saludo }) => {
+    const [productos, setProductos] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const { idCategory } = useParams();
 
-const ItemListContainer = ({saludo}) => {
+    const getProducts = () => {
+      
+        const productsRef = collection(db, "productos");
 
-    const [productos, setProducts]= useState([])
-    const {idCategory} = useParams()
+        // Con o sin categoría
+        const productsQuery = idCategory
+            ? query(productsRef, where("category", "==", idCategory))
+            : productsRef;
 
+       
+        getDocs(productsQuery)
+            .then((dataDb) => {
+                const productsDb = dataDb.docs.map((productDb) => ({
+                    id: productDb.id,
+                    ...productDb.data(),
+                }));
+
+                setProductos(productsDb);
+            })
+            .catch((error) => {
+                console.error("Error al obtener los productos:", error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
 
     useEffect(() => {
-      getProducts()
-      .then((data)=>{
-        if (idCategory){
-          const filterProductos =data.filter( (producto)=> producto.category === idCategory )
-          setProducts(filterProductos)
-        }else{
-          setProducts(data)
-        }
-     
-      })
-      .catch((error)=>{
-       console.log(error) 
-      })
-      .finally(()=>{
-       console.log("finalizo la promesa")
-      })
-
-      
-    }, [idCategory])
-
-    
+        setLoading(true);
+        getProducts();
+    }, [idCategory]);
 
     return (
-      <div className="itemlistcontainer">
-        {saludo}
-        <ItemList productos={productos} />
-      </div>
-    
-  )
-}
+        <div className="itemlistcontainer">
+            {saludo && <h2>{saludo}</h2>}
 
-export default ItemListContainer
+            {loading ? (
+                <div className="loading-container">
+                    <div className="spinner"></div>
+                    <p>Cargando...</p>
+                </div>
+            ) : (
+                <ItemList productos={productos} />
+            )}
+        </div>
+    );
+};
+
+export default ItemListContainer;

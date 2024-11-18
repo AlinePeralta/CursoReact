@@ -6,6 +6,8 @@ $marca-hover: #1730d9;
 $marca-bg: #c3caf9;
 $secun:#16112d;
 
+$blanco:#ffffff;
+
 $bg-loading:  rgba(255, 255, 255, 0.8);
 $bg-overlay: rgba(8, 8, 65, 0.766);
 
@@ -25,7 +27,7 @@ $advertencia-bg: #FFEECC;
 $error: rgb(220 76 100);
 $error-hover: #ff431a;
 $error-bg: #FFCDC2;
-$neutral: hsl(240, 8%, 36%);
+$neutral: #545463;
 $neutral-hover: hsl(240, 8%, 46%);
 
 
@@ -123,3 +125,27 @@ body {
   background-color: $textos-bg;
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+  text-align: center;
+  color: #333;
+}
+
+.spinner {
+  border: 8px solid $bg-loading; 
+  border-top: 8px solid $acento; 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
