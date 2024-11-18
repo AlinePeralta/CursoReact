@@ -35,7 +35,7 @@ const Contacto = () => {
        
               <div className="col-12 col-md-6">
                 <h3 className="mt-3 text-uala acent">
-                  Comunícate con nosotros directamente a través de nuestro chat en línea para resolver tus dudas.
+                  Comunícate con nosotros directamente a través de nuestro chat en línea <br/> para resolver tus dudas.
                 </h3>
                 <div className="contact-info mt-4">
                   <ul className="list-unstyled text-uala">
