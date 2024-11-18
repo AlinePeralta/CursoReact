@@ -41,7 +41,7 @@ const Contacto = () => {
                   <ul className="list-unstyled text-uala">
                     <li><i className="fas fa-phone"></i> +1 (555) 123-4567</li>
                     <li><i className="fas fa-envelope"></i> contacto@uala.com</li>
-                    <li><i className="fas fa-map-marker-alt"></i> Av. Siempre Viva 123, Ciudad, País</li>
+                    <li><i className="fas fa-map-marker-alt"></i> Av. Siempre Viva 123, CDMX, México</li>
                   </ul>
                 </div>
               </div>
