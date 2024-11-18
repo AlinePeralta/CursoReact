@@ -26,8 +26,7 @@ const Checkout = () => {
   const handleSubmitForm = async (event) => {
     event.preventDefault();
 
-    
-    const validationResponse = validateForm(dataForm);
+    const validationResponse = await validateForm(dataForm);
     if (validationResponse.status === 'error') {
       toast.error(validationResponse.message);
       return;
@@ -42,9 +41,9 @@ const Checkout = () => {
 
     try {
       toast.success('Generando orden...');
-      uploadOrder(order);
+      await uploadOrder(order);
     } catch (error) {
-      toast.error(error.message);
+      toast.error('Error al generar la orden.');
     }
   };
 
@@ -53,7 +52,7 @@ const Checkout = () => {
     try {
       const response = await addDoc(ordersRef, newOrder);
       setIdOrder(response.id);
-      updateStock();
+      await updateStock();
       toast.success('Pedido generado correctamente');
     } catch (error) {
       console.error(error);
@@ -68,8 +67,8 @@ const Checkout = () => {
     });
 
     try {
-      await Promise.all(stockUpdates); 
-      deleteCart();  
+      await Promise.all(stockUpdates);
+      deleteCart();
     } catch (error) {
       console.error('Error al actualizar el stock:', error);
       toast.error('Hubo un problema al actualizar el stock.');
@@ -77,7 +76,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="card">
+    <div>
       {idOrder === null ? (
         <FormCheckout
           dataForm={dataForm}
@@ -85,11 +84,17 @@ const Checkout = () => {
           handleSubmitForm={handleSubmitForm}
         />
       ) : (
-        <div>
-          <h2>Gracias por su compra 😊</h2>
-          <p>Sigue el estado de tu pedido: {idOrder}</p>
-          <Link to="/">Volver al inicio</Link>
+        <div className="container d-flex justify-content-center align-items-center min-vh-80">
+        <div className="text-center">
+        <img src="../src/assets/logo.png"  alt="Logo Ualabis" className="img-fluid mb-4 logo-sm"  />
+          <h2 className="">🎉 ¡Gracias por su compra! 😊</h2>
+          <h4 className='mb-4'>Tu orden ha sido generada exitosamente.</h4>
+          <p className="mb-5">Puedes rastrear tu compra con este número de orden: <strong className='text-uala acent'>{idOrder}</strong></p>
+      
+          <Link to="/" className="btn btn-uala">Volver al inicio</Link>
         </div>
+      </div>
+      
       )}
     </div>
   );

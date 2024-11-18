@@ -8,28 +8,41 @@ const CartPreview = () => {
   return (
     <div className="cart-preview">
       {cart.length === 0 ? (
-        <p className="cartEmpty-preview">Tu carrito está vacío  😢</p>
+        <p className="cartEmpty-preview">Tu carrito está vacío 😢</p>
       ) : (
         <div>
-          <div className="row">
-            {cart.slice(0, 3).map((producto, index) => ( 
-              <div key={index} className="col-12 d-flex align-items-center mb-3">
-                <img src={producto.imagen[0]} alt={producto.nombre} width={40} className="me-3" />
-                <div>
-                  <p>{producto.nombre}</p> 
-                  <p>Cant: {producto.cantidad}</p> 
+          <div className="row align-items-center">
+            {cart.slice(0, 3).map((producto, index) => (
+              <div key={index} className="col-12 mb-3">
+             
+                <p className="text-uala acent">{producto.nombre}</p>
+
+                <div className="d-flex align-items-center">
+              
+                  <img src={producto.imagen[0]}  alt={producto.nombre}  width={40} className="me-3"
+                  />
+
+              
+                  <div className="d-flex justify-content-between w-100">
+                    <p>Cant: {producto.cantidad}</p>
+                    <p className="ms-auto">${producto.precio * producto.cantidad}</p>
+                  </div>
                 </div>
-                <p className="ms-auto">${producto.precio * producto.cantidad}</p>
+
+              
+                <hr className="product-divider2" />
               </div>
             ))}
           </div>
           <div className="cart-preview-total mt-3">
-            <p>Total: ${totalPrice()}</p>
-            <Link to="/cart"><button className="btn btn-primary">Ver carrito</button></Link>
+            <p><strong>Total:</strong> ${totalPrice()}</p>
+            <Link to="/cart">
+              <button className="btn btn-outline-primary">Ver carrito</button>
+            </Link>
           </div>
-          
-          <div className="text-end mt-2">
-            <button onClick={deleteCart} className="btn btn-danger">Eliminar carrito</button>
+
+          <div className="text-center mt-2">
+            <button onClick={deleteCart} className="btn btn-danger link">Eliminar carrito</button>
           </div>
         </div>
       )}

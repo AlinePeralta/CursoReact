@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
         getDoc(docRef)
             .then((dataDb) => {
                 const productDb = { id: dataDb.id, ...dataDb.data() };
-                console.log(productDb); // Verifica los datos obtenidos
+                console.log(productDb); 
                 setProducto(productDb);
             })
             .catch((error) => {

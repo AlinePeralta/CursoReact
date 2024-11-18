@@ -1,9 +1,19 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { toast } from 'react-toastify'; 
 
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+  
+    const [cart, setCart] = useState(() => {
+        const savedCart = localStorage.getItem('cart');
+        return savedCart ? JSON.parse(savedCart) : []; 
+    });
+
+    // Guardar el carrito en localStorage 
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]); 
 
     const addProductInCart = (newProduct) => {
         const condicion = isInCart(newProduct.id);
@@ -13,8 +23,10 @@ const CartProvider = ({ children }) => {
             const findIndex = tempCart.findIndex((productoCarrito) => productoCarrito.id === newProduct.id);
             tempCart[findIndex].cantidad += newProduct.cantidad; 
             setCart(tempCart); 
+            toast.success(`${newProduct.nombre} se ha actualizado en tu carrito.`); 
         } else {
             setCart([ ...cart, newProduct]); 
+            toast.success(`${newProduct.nombre} ha sido agregado a tu carrito.`); 
         }
     };
 
@@ -35,13 +47,19 @@ const CartProvider = ({ children }) => {
 
     // ✖️ Eliminar producto por id
     const deleteProductById = (idProduct) => {
-        const filterProducts = cart.filter((productoCarrito) => productoCarrito.id !== idProduct);
-        setCart(filterProducts);
+        const productToDelete = cart.find((productoCarrito) => productoCarrito.id === idProduct);
+
+        if (productToDelete) {
+            const filterProducts = cart.filter((productoCarrito) => productoCarrito.id !== idProduct);
+            setCart(filterProducts);
+            toast.error(`${productToDelete.nombre} fue eliminado del carrito.`);
+        }
     };
 
     // ✖️🛒 Eliminar todo el carrito
     const deleteCart = () => {
         setCart([]);
+        toast.error("Todo el carrito fue eliminado.");
     };
 
     return (

@@ -182,3 +182,12 @@
     visibility: visible;
   }
 }
+
+
+.navbar-toggler {
+  &:hover,
+  &:focus {
+  border: transparent;
+  }
+}
+

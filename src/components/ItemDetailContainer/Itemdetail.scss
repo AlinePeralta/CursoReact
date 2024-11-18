@@ -8,8 +8,8 @@
 
   .secundary-image {
     display: flex;
-    flex-direction: column;
-    gap: 10px; 
+    flex-direction: column; 
+    gap: 10px;
     padding: 10px;
     max-width: 150px;
 
@@ -34,6 +34,22 @@
       width: 100%;
       height: auto;
       border-radius: 5px;
+    }
+  }
+
+
+  @media (max-width: 767px) {
+    .secundary-image {
+      flex-direction: row; 
+      overflow-x: auto; 
+      max-width: 100%; 
+      align-items: center;
+      justify-content: center;
+    }
+
+    .secundary-image img {
+      width: 90px; 
+      height: 90px;
     }
   }
 }

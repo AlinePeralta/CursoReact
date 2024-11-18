@@ -20,13 +20,24 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+      
       }
   
   }
-  .card{
+  .card {
     padding: 1rem;
     border: none;
-
+  
+   
+    &:not(.noneHover):hover {
+      border: 4px solid $marca-bg;
+    }
+  
+    &.noneHover {
+      border: none;  
+    }
+  
+  
   
         .card-title{
          color: $acento;

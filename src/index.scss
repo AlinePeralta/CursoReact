@@ -1,9 +1,9 @@
 //Variables!
 
 //Color principal de la marca
-$marca: #1226ab;
-$marca-hover: #1730d9;
-$marca-bg: #c3caf9;
+$marca: #233a87;
+$marca-hover: #0e2160;
+$marca-bg: rgba(138, 159, 188, 0.603);
 $secun:#16112d;
 
 $blanco:#ffffff;
@@ -119,7 +119,25 @@ $bp-desk-large: 1600px; // MONITOR
 
 body {
   font-family: "Kanit", sans-serif;
-  background-color: $textos-bg;
+  background-color: rgba(169, 186, 209, 0.258);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  &.bg-contacto {
+    background-color: $blanco ;
+  }
+}
+
+.container-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px; 
 }
 
 .loading-container {
@@ -149,5 +167,185 @@ body {
 
 
 .btn-uala{
+background-color: $acento;
+padding: .7rem;
+color: $blanco;
+border: 2px solid $acento;
 
+margin-right: .6rem;
+&:hover{
+  background-color: transparent;
+  color: $acento;
+  border: 2px solid $acento;
+}
+&.sm{
+  padding: .4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @include mob {
+    padding: .6rem;
+    margin-top: -24px; 
+    font-size: 0.8rem; 
+  }
+}
+
+}
+
+.btn-danger{
+  background-color: $error;
+  margin-left: .6rem;
+margin-right: .6rem;
+padding: .7rem;
+color: $blanco;
+border: 2px solid $error;
+&:hover{
+  background-color: transparent;
+  color: $error;
+  border: 2px solid $error;
+}
+}
+
+.text-uala{
+  color: $marca;
+}
+
+
+.btn-danger{
+  background-color: $error;
+  margin-left: .6rem;
+margin-right: .6rem;
+padding: .7rem;
+color: $blanco;
+border: 2px solid $error;
+&:hover{
+  background-color: transparent;
+  color: $error;
+  border: 2px solid $error;
+}
+
+&.link{
+  color: $error;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline $error;
+}
+
+}
+
+.text-uala{
+  color: $marca;
+  &.acent{
+    color: $acento;
+  }
+}
+
+.cartEmpty{
+  height: 80vh;
+  .cartEmptyImg{
+    width: 24%;
+  }
+}
+
+.btn-outline-primary{
+  border: 1px solid $marca;
+  color: $marca;
+  &:hover{
+background-color: $marca-hover;
+border: 1px solid $marca;
+  }
+}
+
+.product-divider {
+  border-bottom: 1px solid $marca-bg;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.textForm{
+  @include mob{
+    padding-top: 2rem;
+  }
+}
+
+.logo-sm{
+  width: 28%;
+}
+
+.min-vh-80{
+height: 80vh;
+}
+
+input::placeholder {
+  color: $marca-bg!important; 
+}
+
+.bg-marca {
+  background: linear-gradient(120deg, $marca-hover, darken($marca-hover, 20%));
+}
+
+.text-cta{
+  font-size: 1.4rem;
+}
+
+//contacto
+.contacto {
+  background-color: $blanco ;
+}
+
+.video-fullwidth {
+  width: 80%;
+  height: 80vh; 
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  background-color: #ffffff; 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: none; 
+  display: flex;
+  align-items: center; 
+  gap: 20px; 
+
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+
+  a {
+    color: #007bff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  i {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+
+  @media (max-width: 767px) {
+    .contact-info {
+      flex-direction: column; /* En pantallas pequeñas, se apilan los elementos */
+      align-items: flex-start;
+    }
+  }
+}
+
+
+.contSecond{
+  @include mob(){
+    margin-top: -14rem;
+  }
 }
