@@ -10,7 +10,7 @@ const Cart = () => {
     return (
       <div className="container d-flex align-items-center justify-content-center cartEmpty" >
   <div className="text-center">
-  <img src="./public/search_empty.png" alt="Carrito vacío" className="img-fluid mb-4 cartEmptyImg"  />
+  <img src="/search_empty.png" alt="Carrito vacío" className="img-fluid mb-4 cartEmptyImg"  />
     <h2 className="mb-4">No hay productos en el carrito </h2>
 
     <Link to="/">
