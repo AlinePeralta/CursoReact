@@ -57,9 +57,11 @@ const CartProvider = ({ children }) => {
     };
 
     // ✖️🛒 Eliminar todo el carrito
-    const deleteCart = () => {
+    const deleteCart = (showAlert = true) => {
         setCart([]);
-        toast.error("Todo el carrito fue eliminado.");
+        if (showAlert) {
+            toast.error("Todo el carrito fue eliminado.");
+        }
     };
 
     return (

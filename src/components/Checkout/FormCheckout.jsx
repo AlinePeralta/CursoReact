@@ -7,8 +7,8 @@ const FormCheckout = ({ dataForm, handleChangeInput, handleSubmitForm }) => {
         <div className="col-md-6 d-flex justify-content-center align-items-center mb-4 mb-md-0 textForm">
           <div className="text-center">
             <img
-              src="../../public/ilus-ly-copa.webp"
-              alt="Carrito vacío"
+              src="/ilus-ly-copa.webp"
+              alt="Copa uala ilustracion"
               className="img-fluid mb-4 cartEmptyImg"
             />
             <h2 className="text-uala acent">¡Llena tus datos para completar tu compra!</h2>
@@ -18,7 +18,7 @@ const FormCheckout = ({ dataForm, handleChangeInput, handleSubmitForm }) => {
 
         <div className="col-md-6">
           <div className="card p-4 shadow-sm noneHover">
-            <h3 className="text-center mb-4 text-uala pt-4">Formulario de Compra</h3>
+            <h3 className="text-center mb-4 text-uala pt-4">Formulario de compra</h3>
             <form onSubmit={handleSubmitForm}>
               <div className="mb-3">
                 <label htmlFor="fullname" className="form-label">Nombre completo</label>

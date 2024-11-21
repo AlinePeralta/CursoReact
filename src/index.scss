@@ -123,6 +123,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-x: hidden;
   
   &.bg-contacto {
     background-color: $blanco ;
@@ -138,6 +139,9 @@ body {
 .main-content {
   flex: 1;
   padding: 20px; 
+  @include mob{
+    padding: 16px; 
+  }
 }
 
 .loading-container {

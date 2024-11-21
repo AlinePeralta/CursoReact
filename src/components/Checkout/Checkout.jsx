@@ -6,6 +6,7 @@ import db from '../../db/db.js';
 import { Link } from 'react-router-dom';
 import validateForm from '../../utils/validateForm.js';
 import { toast } from 'react-toastify';
+import logo from '../../assets/logo.png';
 
 const Checkout = () => {
   const [dataForm, setDataForm] = useState({
@@ -39,12 +40,8 @@ const Checkout = () => {
       total: totalPrice()
     };
 
-    try {
-      toast.success('Generando orden...');
-      await uploadOrder(order);
-    } catch (error) {
-      toast.error('Error al generar la orden.');
-    }
+    toast.success('Pedido exitoso, consulta tu ID orden');
+    await uploadOrder(order);
   };
 
   const uploadOrder = async (newOrder) => {
@@ -53,9 +50,7 @@ const Checkout = () => {
       const response = await addDoc(ordersRef, newOrder);
       setIdOrder(response.id);
       await updateStock();
-      toast.success('Pedido generado correctamente');
     } catch (error) {
-      console.error(error);
       toast.error('Hubo un error al generar la orden');
     }
   };
@@ -68,9 +63,8 @@ const Checkout = () => {
 
     try {
       await Promise.all(stockUpdates);
-      deleteCart();
+      deleteCart(false); 
     } catch (error) {
-      console.error('Error al actualizar el stock:', error);
       toast.error('Hubo un problema al actualizar el stock.');
     }
   };
@@ -85,16 +79,14 @@ const Checkout = () => {
         />
       ) : (
         <div className="container d-flex justify-content-center align-items-center min-vh-80">
-        <div className="text-center">
-        <img src="../src/assets/logo.png"  alt="Logo Ualabis" className="img-fluid mb-4 logo-sm"  />
-          <h2 className="">🎉 ¡Gracias por su compra! 😊</h2>
-          <h4 className='mb-4'>Tu orden ha sido generada exitosamente.</h4>
-          <p className="mb-5">Puedes rastrear tu compra con este número de orden: <strong className='text-uala acent'>{idOrder}</strong></p>
-      
-          <Link to="/" className="btn btn-uala">Volver al inicio</Link>
+          <div className="text-center">
+            <img src={logo} alt="Logo Ualabis" className="img-fluid mb-4 logo-sm" />
+            <h2>🎉 ¡Gracias por su compra! 😊</h2>
+            <h4 className='mb-4'>Tu orden ha sido generada exitosamente.</h4>
+            <p className="mb-5">Puedes rastrear tu compra con este número de orden: <strong className='text-uala acent'>{idOrder}</strong></p>
+            <Link to="/" className="btn btn-uala">Volver al inicio</Link>
+          </div>
         </div>
-      </div>
-      
       )}
     </div>
   );
